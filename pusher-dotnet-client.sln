@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PusherClient", "PusherClient\PusherClient.csproj", "{9E30E755-C00E-4BF7-B56B-8F2D836FBA60}"
 EndProject
@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{2D9F07A0
 		pusher-dotnet-client.nuspec = pusher-dotnet-client.nuspec
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PusherClient.NetStandard", "PusherClient.NetStandard\PusherClient.NetStandard.csproj", "{72D8EE28-AF0F-47FD-B021-A35067E4699C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,8 +37,15 @@ Global
 		{218EE921-5E27-4E15-9382-42DD2F40857C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{218EE921-5E27-4E15-9382-42DD2F40857C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{218EE921-5E27-4E15-9382-42DD2F40857C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D8EE28-AF0F-47FD-B021-A35067E4699C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D8EE28-AF0F-47FD-B021-A35067E4699C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D8EE28-AF0F-47FD-B021-A35067E4699C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D8EE28-AF0F-47FD-B021-A35067E4699C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA8002D1-1DB7-4DB6-88E4-5E29F8DE9C57}
 	EndGlobalSection
 EndGlobal
