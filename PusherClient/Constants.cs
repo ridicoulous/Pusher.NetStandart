@@ -13,5 +13,9 @@
         public const string CHANNEL_MEMBER_ADDED = "pusher_internal:member_added";
         public const string CHANNEL_MEMBER_REMOVED = "pusher_internal:member_removed";
 
+        public const string PROTOCOLVERSION = "5";
+        public const string CLIENTNAME = "pusher-dotnet-client";
+        public const string VERSIONNUMBER = "0.0.1";
+
     }
 }
