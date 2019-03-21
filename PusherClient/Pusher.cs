@@ -112,6 +112,8 @@ namespace PusherClient
                 {
                   Trace.TraceEvent(TraceEventType.Warning, 0, "Attempt to connect when another connection has already started. New attempt has been ignored.");
                   return;
+                    Trace.TraceEvent(TraceEventType.Warning, 0, "Attempt to connect when another connection has already started. New attempt has been ignored.");
+                    return;
                 }
 
                 var scheme = "ws://";
