@@ -307,6 +307,7 @@ namespace PusherClient
                 channel.Value.Unsubscribe();
             }
 
+         //   SubscribeExistingChannels();
         }
 
         internal void SubscribeExistingChannels()
