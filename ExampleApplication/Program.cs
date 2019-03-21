@@ -1,4 +1,5 @@
-﻿using PusherClient;
+﻿using Newtonsoft.Json;
+using PusherClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,28 +18,43 @@ namespace ExampleApplication
             
         static void Main(string[] args)
         {
-            // Get the user's name
-            Console.WriteLine("What is your name?");
-            _name = Console.ReadLine();
+            _pusher = new Pusher("4b6a8b2c758be4e58868", new PusherOptions() { PingTimeout =60000,Endpoint= "pusher.kuna.io", Encrypted=true });
+            _pusher.Connect();
+            //var _myChannel = _pusher.Subscribe("market-btcusdt-global");
+            //_myChannel.Subscribed += _myChannel_Subscribed;
+            
+            //_myChannel.Bind("update", (dynamic data) =>
+            //{
+            //    Console.WriteLine(JsonConvert.SerializeObject(data));
+            //});
+            Console.ReadLine();
+            //// Get the user's name
+            //Console.WriteLine("What is your name?");
+            //_name = Console.ReadLine();
 
-            InitPusher();
+            //InitPusher();
 
-            // Read input in loop
-            string line;
+            //// Read input in loop
+            //string line;
 
-            do
-            {
-                line = Console.ReadLine();
+            //do
+            //{
+            //    line = Console.ReadLine();
 
-                if (line == "quit")
-                    break;
-                else
-                    _chatChannel.Trigger("client-my-event", new { message = line, name = _name });            
+            //    if (line == "quit")
+            //        break;
+            //    else
+            //        _chatChannel.Trigger("client-my-event", new { message = line, name = _name });            
 
-            } while (line != null);
+            //} while (line != null);
 
-            _pusher.Disconnect();
+            //_pusher.Disconnect();
 
+        }
+
+        private static void _myChannel_Subscribed(object sender)
+        {
+            Console.WriteLine("Subscribed");
         }
 
         #region Pusher Initiation / Connection

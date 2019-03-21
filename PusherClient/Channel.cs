@@ -1,4 +1,6 @@
-﻿namespace PusherClient
+﻿using System.Threading;
+
+namespace PusherClient
 {
     public delegate void SubscriptionEventHandler(object sender);
 
@@ -33,6 +35,7 @@
 
             if(Subscribed != null)
                 Subscribed(this);
+        
         }
 
         public void Unsubscribe()
@@ -40,6 +43,8 @@
             _isSubscribed = false;
             _pusher.Unsubscribe(this.Name);
         }
+
+        
 
         public void Trigger(string eventName, object obj)
         {

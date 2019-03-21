@@ -3,6 +3,10 @@
     class Constants
     {
         public const string ERROR = "pusher:error";
+        public const string PING = "pusher:ping";
+        public const string PONG= "pusher:pong";
+
+
 
         public const string CONNECTION_ESTABLISHED = "pusher:connection_established";
 
@@ -13,9 +17,9 @@
         public const string CHANNEL_MEMBER_ADDED = "pusher_internal:member_added";
         public const string CHANNEL_MEMBER_REMOVED = "pusher_internal:member_removed";
 
-        public const string PROTOCOLVERSION = "5";
-        public const string CLIENTNAME = "pusher-dotnet-client";
-        public const string VERSIONNUMBER = "0.0.1";
+       // public const string PROTOCOLVERSION = "5";
+        //public const string CLIENTNAME = "pusher-dotnet-client";
+       // public const string VERSIONNUMBER = "0.0.1";
 
     }
 }

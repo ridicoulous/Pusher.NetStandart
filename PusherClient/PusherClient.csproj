@@ -3,18 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Fork of https://github.com/pusher-community/pusher-websocket-dotnet to enable NetStandard2.0 support</Description>
+    <Description>Fork with some updates of https://github.com/justin-lavelle/pusher-websocket-dotnet</Description>
     <RepositoryUrl></RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>pusher pusherclient</PackageTags>
-    <PackageProjectUrl>https://github.com/justin-lavelle/pusher-websocket-dotnet</PackageProjectUrl>
-    <AssemblyVersion>0.5.1.0</AssemblyVersion>
-    <FileVersion>0.5.1.0</FileVersion>
+    <PackageProjectUrl>https://github.com/ridicoulous/Pusher.NetStandart</PackageProjectUrl>
+    <AssemblyVersion>0.5.2.0</AssemblyVersion>
+    <FileVersion>0.5.2.0</FileVersion>
     <Version>0.5.1</Version>
-    <PackageId>PusherClient.NetStandard</PackageId>
-    <Authors>PusherClient.NetStandard</Authors>
-    <Company>PusherClient.NetStandard</Company>
-    <Product>PusherClient.NetStandard</Product>
+    <PackageId>Pusher.NetStandard</PackageId>
+    <Authors>msg_kurt</Authors>
+    <Company>msg_kurt</Company>
+    <Product>Pusher.NetStandard</Product>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
