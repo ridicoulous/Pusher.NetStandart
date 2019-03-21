@@ -18,7 +18,7 @@ namespace ExampleApplication
             
         static void Main(string[] args)
         {
-            _pusher = new Pusher("4b6a8b2c758be4e58868", new PusherOptions() { PingTimeout =60000,Endpoint= "pusher.kuna.io", Encrypted=true });
+            _pusher = new Pusher("", new PusherOptions() { PingTimeout =60000,, Encrypted=true });
             _pusher.Connect();
             //var _myChannel = _pusher.Subscribe("market-btcusdt-global");
             //_myChannel.Subscribed += _myChannel_Subscribed;
