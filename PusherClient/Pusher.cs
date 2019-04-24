@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
+using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Threading;
 
 namespace PusherClient
 {
@@ -33,10 +32,10 @@ namespace PusherClient
         // create single TraceSource instance to be used for logging
         public static TraceSource Trace = new TraceSource("Pusher");
 
-        // const int PROTOCOL_NUMBER = 5;
+        const int PROTOCOL_NUMBER = 5;
         private readonly string _applicationKey = null;
         private readonly PusherOptions _options = null;
-        private readonly int _connectionTimeout = 60000;
+
         private Connection _connection = null;
         private ErrorEventHandler _errorEvent;
 
@@ -68,11 +67,10 @@ namespace PusherClient
 
         #region Properties
 
-        public string SocketID
-        {
+        public string SocketID {
             get
             {
-                return (_connection != null ? _connection.SocketID : null);
+                return (_connection != null? _connection.SocketID: null);
             }
         }
 
@@ -80,7 +78,7 @@ namespace PusherClient
         {
             get
             {
-                return (_connection != null ? _connection.State : ConnectionState.Disconnected);
+                return (_connection != null? _connection.State: ConnectionState.Disconnected);
             }
         }
 
@@ -99,11 +97,7 @@ namespace PusherClient
             if (options == null)
                 _options = new PusherOptions() { Encrypted = false };
             else
-            {
                 _options = options;
-                _connectionTimeout = options.PingTimeout;
-            }
-
         }
 
         #region Public Methods
@@ -111,11 +105,13 @@ namespace PusherClient
         public void Connect()
         {
             // Prevent multiple concurrent connections
-            lock (_lockingObject)
+            lock(_lockingObject)
             {
                 // Ensure we only ever attempt to connect once
                 if (_connection != null)
                 {
+                  Trace.TraceEvent(TraceEventType.Warning, 0, "Attempt to connect when another connection has already started. New attempt has been ignored.");
+                  return;
                     Trace.TraceEvent(TraceEventType.Warning, 0, "Attempt to connect when another connection has already started. New attempt has been ignored.");
                     return;
                 }
@@ -126,10 +122,10 @@ namespace PusherClient
                     scheme = "wss://";
 
                 // TODO: Fallback to secure?
-                //wss://ws.pusherapp.com/app/2ff981bb060680b5ce97?protocol=7&client=js&version=4.4.0&flash=false
-                string url = String.Format("{0}{1}/app/{2}?protocol={3}&client={4}&version={5}&flash=false",
-                    scheme, _options.Host, _applicationKey, _options.ProtocolNumber, _options.Client,
-                   _options.Version);
+
+                string url = String.Format("{0}{1}/app/{2}?protocol={3}&client={4}&version={5}",
+                    scheme, _options.Host, _applicationKey, Settings.Default.ProtocolVersion, Settings.Default.ClientName,
+                    Settings.Default.VersionNumber);
 
                 _connection = new Connection(this, url);
                 RegisterEventsOnConnection();
@@ -195,10 +191,7 @@ namespace PusherClient
 
             return SubscribeToChannel(chanType, channelName);
         }
-        public void SendPing()
-        {
-            _connection.Send(JsonConvert.SerializeObject(new { @event = Constants.PING, data = new { } }));
-        }
+
         private Channel SubscribeToChannel(ChannelTypes type, string channelName)
         {
             if (!Channels.ContainsKey(channelName))
@@ -265,7 +258,7 @@ namespace PusherClient
         internal void Unsubscribe(string channelName)
         {
             if (_connection.State == ConnectionState.Connected)
-                _connection.Send(JsonConvert.SerializeObject(new { @event = Constants.CHANNEL_UNSUBSCRIBE, data = new { channel = channelName } }));
+              _connection.Send(JsonConvert.SerializeObject(new { @event = Constants.CHANNEL_UNSUBSCRIBE, data = new { channel = channelName } }));
         }
 
         #endregion
@@ -292,7 +285,6 @@ namespace PusherClient
         {
             if (this.Connected != null)
                 this.Connected(sender);
-            //SendPing();
         }
 
         private void RaiseError(PusherException error)
@@ -314,6 +306,7 @@ namespace PusherClient
             {
                 channel.Value.Unsubscribe();
             }
+
          //   SubscribeExistingChannels();
         }
 

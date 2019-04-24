@@ -11,7 +11,7 @@ More general documentation can be found at <http://pusher.com/docs/>.
 ### NuGet Package
 
 ```
-Install-Package PusherClient.NetStandard
+Install-Package Pusher.NetStandard
 ```
 
 ## Usage
