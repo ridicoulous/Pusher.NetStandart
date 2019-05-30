@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿//using Newtonsoft.Json;
 using PusherClient;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace ExampleApplication
             
         static void Main(string[] args)
         {
-            _pusher = new Pusher("", new PusherOptions() { PingTimeout =60000,, Encrypted=true });
+            _pusher = new Pusher("", new PusherOptions() { PingTimeout =60000, Encrypted=true });
             _pusher.Connect();
             //var _myChannel = _pusher.Subscribe("market-btcusdt-global");
             //_myChannel.Subscribed += _myChannel_Subscribed;

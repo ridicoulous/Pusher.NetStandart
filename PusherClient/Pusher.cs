@@ -155,7 +155,7 @@ namespace PusherClient
         {
             UnregisterEventsOnDisconnection();
             MarkChannelsAsUnsubscribed();
-            _connection.Disconnect();
+            _connection?.Disconnect();
             _connection = null;
         }
 
