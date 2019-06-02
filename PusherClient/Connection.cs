@@ -103,9 +103,7 @@ namespace PusherClient
         private void ChangeState(ConnectionState state)
         {
             this._state = state;
-
-            if (ConnectionStateChanged != null)
-                ConnectionStateChanged(this, this._state);
+            ConnectionStateChanged?.Invoke(this, this._state);
         }
 
         private void RaiseError(PusherException error)

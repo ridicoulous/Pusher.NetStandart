@@ -283,9 +283,8 @@ namespace PusherClient
                     SubscribeExistingChannels();
                     break;
             }
-
-            if (ConnectionStateChanged != null)
-                ConnectionStateChanged(sender, state);
+            if (sender != null)
+                ConnectionStateChanged?.Invoke(sender, state);
         }
 
         void _connection_Connected(object sender)
