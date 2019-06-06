@@ -264,7 +264,7 @@ namespace PusherClient
 
         internal void Unsubscribe(string channelName)
         {
-            if (_connection.State == ConnectionState.Connected)
+            if (_connection!=null&&_connection.State == ConnectionState.Connected)
                 _connection.Send(JsonConvert.SerializeObject(new { @event = Constants.CHANNEL_UNSUBSCRIBE, data = new { channel = channelName } }));
         }
 
@@ -309,10 +309,14 @@ namespace PusherClient
 
         internal void MarkChannelsAsUnsubscribed()
         {
-            foreach (var channel in Channels)
+            if(Channels!=null)
             {
-                channel.Value.Unsubscribe();
+                foreach (var channel in Channels)
+                {
+                    channel.Value?.Unsubscribe();
+                }
             }
+            
          //   SubscribeExistingChannels();
         }
 

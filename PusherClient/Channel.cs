@@ -41,14 +41,14 @@ namespace PusherClient
         public void Unsubscribe()
         {
             _isSubscribed = false;
-            _pusher.Unsubscribe(this.Name);
+            _pusher?.Unsubscribe(this.Name);
         }
 
         
 
         public void Trigger(string eventName, object obj)
         {
-            _pusher.Trigger(this.Name, eventName, obj);
+            _pusher?.Trigger(this.Name, eventName, obj);
         }
 
     }
