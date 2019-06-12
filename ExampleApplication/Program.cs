@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-
+using PiPusher = PusherServer.Pusher;
 namespace ExampleApplication
 {
 
@@ -18,38 +18,8 @@ namespace ExampleApplication
             
         static void Main(string[] args)
         {
-            _pusher = new Pusher("", new PusherOptions() { PingTimeout =60000, Encrypted=true });
-            _pusher.Connect();
-            //var _myChannel = _pusher.Subscribe("market-btcusdt-global");
-            //_myChannel.Subscribed += _myChannel_Subscribed;
-            
-            //_myChannel.Bind("update", (dynamic data) =>
-            //{
-            //    Console.WriteLine(JsonConvert.SerializeObject(data));
-            //});
+            InitPusher();
             Console.ReadLine();
-            //// Get the user's name
-            //Console.WriteLine("What is your name?");
-            //_name = Console.ReadLine();
-
-            //InitPusher();
-
-            //// Read input in loop
-            //string line;
-
-            //do
-            //{
-            //    line = Console.ReadLine();
-
-            //    if (line == "quit")
-            //        break;
-            //    else
-            //        _chatChannel.Trigger("client-my-event", new { message = line, name = _name });            
-
-            //} while (line != null);
-
-            //_pusher.Disconnect();
-
         }
 
         private static void _myChannel_Subscribed(object sender)
@@ -61,27 +31,23 @@ namespace ExampleApplication
 
         private static void InitPusher()
         {
-            _pusher = new Pusher("7899dd5cb232af88083d", new PusherOptions(){
-                Authorizer = new HttpAuthorizer("http://localhost:8888/auth/" + HttpUtility.UrlEncode(_name))
-            });
+            //var piPusher = new PiPusher("","","");
+            
+            _pusher = new Pusher("4b6a8b2c758be4e58868", new PusherOptions() { Authorizer = new HttpAuthorizer("https://kuna.io/pusher/auth"), Encrypted = true, Endpoint = "pusher.kuna.io", ProtocolNumber = 7, Version = "3.0.0" });
             _pusher.ConnectionStateChanged += _pusher_ConnectionStateChanged;
             _pusher.Error += _pusher_Error;
 
             // Setup private channel
-            _chatChannel = _pusher.Subscribe("private-channel");
+            _chatChannel = _pusher.Subscribe("private-7GBET5ZHZ");
             _chatChannel.Subscribed += _chatChannel_Subscribed;
 
             // Inline binding!
-            _chatChannel.Bind("client-my-event", (dynamic data) =>
+            _chatChannel.Bind("account", (dynamic data) =>
             {
-                Console.WriteLine("[" + data.name + "] " + data.message);
+                Console.WriteLine(data);
             });
 
-            // Setup presence channel
-            _presenceChannel = (PresenceChannel)_pusher.Subscribe("presence-channel");
-            _presenceChannel.Subscribed += _presenceChannel_Subscribed;
-            _presenceChannel.MemberAdded += _presenceChannel_MemberAdded;
-            _presenceChannel.MemberRemoved += _presenceChannel_MemberRemoved;
+            // Setup presence channel          
 
             _pusher.Connect();
         }
