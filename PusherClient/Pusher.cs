@@ -136,7 +136,18 @@ namespace PusherClient
                 _connection.Connect();
             }
         }
-
+        public void SendMessage(string data)
+        {
+            _connection.Send(data);
+        }
+        public void SendMessage(string eventName, object payload)
+        {
+            _connection.Send(JsonConvert.SerializeObject(new { @event = eventName, data=payload }));
+        }
+        public void SendMessage(string channelName, string eventName, object payload)
+        {
+            _connection.Send(JsonConvert.SerializeObject(new { @event = eventName, channel = channelName, data = payload }));
+        }
         private void RegisterEventsOnConnection()
         {
             _connection.Connected += _connection_Connected;
@@ -256,7 +267,7 @@ namespace PusherClient
         #endregion
 
         #region Internal Methods
-
+       
         internal void Trigger(string channelName, string eventName, object obj)
         {
             _connection.Send(JsonConvert.SerializeObject(new { @event = eventName, channel = channelName, data = obj }));

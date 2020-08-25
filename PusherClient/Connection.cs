@@ -213,6 +213,8 @@ namespace PusherClient
             else
             {
                 // Assume channel event
+                if (String.IsNullOrEmpty(message.channel))
+                    return;
                 if (_pusher.Channels.ContainsKey(message.channel))
                     _pusher.Channels[message.channel].EmitEvent(message.@event, message.data);
             }

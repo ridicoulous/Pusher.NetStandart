@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApplication", "ExampleApplication\ExampleApplication.csproj", "{D6D38D9A-EF72-4C0D-A4A9-C325775E5CA3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthHost", "AuthHost\AuthHost.csproj", "{218EE921-5E27-4E15-9382-42DD2F40857C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{2D9F07A0-C627-434A-8C94-CD7CD175720F}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
@@ -23,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D6D38D9A-EF72-4C0D-A4A9-C325775E5CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6D38D9A-EF72-4C0D-A4A9-C325775E5CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6D38D9A-EF72-4C0D-A4A9-C325775E5CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6D38D9A-EF72-4C0D-A4A9-C325775E5CA3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{218EE921-5E27-4E15-9382-42DD2F40857C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{218EE921-5E27-4E15-9382-42DD2F40857C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{218EE921-5E27-4E15-9382-42DD2F40857C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{218EE921-5E27-4E15-9382-42DD2F40857C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{72D8EE28-AF0F-47FD-B021-A35067E4699C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{72D8EE28-AF0F-47FD-B021-A35067E4699C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72D8EE28-AF0F-47FD-B021-A35067E4699C}.Release|Any CPU.ActiveCfg = Release|Any CPU
